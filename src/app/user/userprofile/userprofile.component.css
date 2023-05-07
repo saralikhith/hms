@@ -1,0 +1,9 @@
+input:disabled{
+    background-color: white;
+    border : none;
+}
+
+.form-label{
+    padding : 6px;
+    margin-bottom: 0;
+}

@@ -1,0 +1,195 @@
+<section id="x" class="py-2">
+  <div class="container px-md-5 text-lg-start  mt-2">
+    <div class="row gx-lg-5 align-items-center mb-5">
+      <div class="col-lg-2 mb-5 mb-lg-0 position-relative"></div>
+      <div class="col-lg-8 mb-5 mb-lg-0 position-relative">
+        <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+        <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+
+        <div class="card bg-glass">
+          <h5 class="mt-5 display-6 mx-auto fw-bold ls-tight" style="color: hsl(220, 100%, 50%)">
+            Appointment
+            <span style="color: hsl(218, 81%, 75%)">Form</span>
+          </h5>
+          <div class="card-body px-4 py-2 px-md-5">
+            <div class="d-flex justify-content-center">
+              <button style="background-color: rgb(255, 170, 170) !important;color: white;" data-mdb-toggle="modal"
+                data-mdb-target="#exampleModal" class="btn">Emergency Appointment</button>
+            </div>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <form [formGroup]="emergencyForm" #ref1="ngForm">
+                    <div class="modal-body">
+                  
+                      <input type="text" placeholder="patient name" name="patientname" class="form-control mt-2 mb-2"
+                        formControlName="patientname">
+                      <p class="text-danger"
+                        *ngIf="((ref1.submitted || emergencyName.touched) && emergencyName?.errors?.['required'])">
+                        *emergencyName is required</p>
+
+                      <p class="text-danger"
+                        *ngIf="((ref1.submitted || emergencyName.touched) && emergencyName?.errors?.['minlength'])">
+                        *emergencyName Should have minimum 6 characters</p>
+                      <select class="form-select mb-2" aria-label="Default select example" name="specialization"
+                        formControlName="specialization">
+
+
+                        <option value="surgeory">Surgeory</option>
+                        <option value="dentist">Dental checkup</option>
+                        <option value="gynecologist">Gynecologist checkup</option>
+                        <option value="dermatologist">Dermatologist checkup</option>
+                        <option value="ent">ENT checkup</option>
+                        <option value="generalPhysician">General Physician checkup</option>
+                      </select>
+                      <p class="text-danger"
+                        *ngIf="((ref1.submitted || emSpecilization.touched) && emSpecilization?.errors?.['required'])">
+                        *Specilization is required</p>
+                      <p class="alert alert-danger">If it is not an emergency appointment you will face serious
+                        consequences</p>
+
+
+
+                    </div>
+                    <div class="modal-footer">
+
+                      <button type="button" class="btn btn-danger" data-mdb-dismiss="modal">Cancel</button>
+                      <button type="button" (click)="emergency()" [disabled]="!emergencyForm.valid"
+                        data-mdb-dismiss="modal" class="btn btn-primary">Emergency</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <form [formGroup]="appointmentForm" (ngSubmit)="appointmentForm.valid && bookAppointment()" #ref="ngForm">
+              <p class="text-center mt-4"><b class="text-secondary">Patient Details</b></p>
+              <div class="row">
+                <div class="mb-3 mt-3  col-lg-12">
+
+                  <input type="text" placeholder="Patient Name" name="patientname" id="patientname" class="form-control"
+                    formControlName="patientname" style="width: 100%;">
+                    <p class="text-danger"
+                    *ngIf="((ref.submitted || patientName.touched) && patientName?.errors?.['required'])">*patientName
+                    is required</p>
+                  <p class="text-danger"
+                    *ngIf="((ref.submitted || patientName.touched) && patientName?.errors?.['minlength'])">*patientName
+                    Should have minimum 6 characters</p>
+                  <p class="text-danger"
+                    *ngIf="((ref.submitted || patientName.touched) && patientName?.errors?.['pattern'])">*patientName
+                    Should contain only alphabets</p>
+
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="" class="form-label">Specialization</label>
+                <select id="specialization" name="specialization" style="width: 100%;" class="form-control"
+                  placeholder="specialization" formControlName="specialization">
+
+                  <option value="surgeory" selected>Surgeory</option>
+                  <option value="dentist">Dental checkup</option>
+                  <option value="gynecologist">Gynecologist checkup</option>
+                  <option value="dermatologist">Dermatologist checkup</option>
+                  <option value="ent">ENT checkup</option>
+                  <option value="generalPhysician">General Physician checkup</option>
+                </select>
+                <p class="text-danger"
+                  *ngIf="((ref.submitted || specialization.touched) && specialization?.errors?.['required'])">
+                  *specialization is required</p>
+              </div>
+
+
+
+              <p class="text-center mt-4"><b class="text-secondary">Timing Details</b></p>
+              <div class="mb-3 mt-3">
+                <input type="date" name="date" id="appointmentdate" min="{{today | date:'yyyy-MM-dd'}}"
+                  style="width: 100%;" class="form-control" formControlName="date">
+                <p class="text-danger" *ngIf="((ref.submitted || date.touched) && date?.errors?.['required'])">*date is
+                  required</p>
+
+              </div>
+              <div class="mb-3">
+                <label class="form-label ">Time Slot</label>
+                <select name="timeslot" id="timeslot" placeholder="time slot" style="width: 100%;" class="form-control"
+                  formControlName="timeslot">
+                  <!-- <option selected="">Select Time</option> -->
+                  <option value="10AM-11AM">10AM-11AM</option>
+                  <option value="11AM-12PM">11AM-12PM</option>
+                  <option value="12PM-1PM">12PM-1PM</option>
+                  <option value="1PM-2PM">1PM-2PM</option>
+                  <option value="2PM-3PM">2PM-3PM</option>
+                  <option value="3PM-4PM">3PM-4PM</option>
+                  <option value="4PM-5PM">4PM-5PM</option>
+                </select>
+                <p class="text-danger" *ngIf="((ref.submitted || timeslot.touched) && timeslot?.errors?.['required'])">
+                  *timeslot is required</p>
+              </div>
+
+
+
+              <p class="text-center mt-4"><b class="text-secondary">Emergency Details</b></p>
+              <div class="mb-3 ">
+               
+                <input type="text" id="emergencyname" name="emergencyname" style="width: 100%;" class="form-control"
+                  placeholder="Emergency Name" formControlName="emergencyname">
+                <p class="text-danger"
+                  *ngIf="((ref.submitted || emergencyname.touched) && emergencyname?.errors?.['required'])">
+                  *emergencyname is required</p>
+                  <p class="text-danger"
+                  *ngIf="((ref.submitted || emergencyname.touched) && emergencyname?.errors?.['pattern'])">
+                  *emergencyname should contain only alphabets</p>
+                <p class="text-danger"
+                  *ngIf="((ref.submitted || emergencyname.touched) && emergencyname?.errors?.['minlength'])">
+                  *emergencyname Should have minimum 6 characters</p>
+                <p class="text-danger" *ngIf="((ref.submitted || emergencyname.touched) && appointmentForm.errors)">
+                  *emergencyName and patient name cannot be same</p>
+                <div id="emergencynameal"></div>
+              </div>
+              <div class="mb-3">
+                <input type="number" id="emergencyphone" name="emergencyphone" style="width: 100%;" class="form-control"
+                  placeholder="Emergency Phone" formControlName="emergencyphone">
+                <p class="text-danger"
+                  *ngIf="((ref.submitted || emergencyphone.touched) && emergencyphone?.errors?.['required'])">
+                  *emergencyphone is required</p>
+                <p class="text-danger"
+                  *ngIf="((ref.submitted || emergencyphone.touched) && emergencyphone?.errors?.['pattern'])">
+                  *emergencyphone should contain 10 digits</p>
+                <div id="emergencyphoneal"></div>
+              </div>
+              <div class="mb-3">
+                <textarea id="problem" rows="3" name="problem" style="width: 100%;" class="form-control"
+                  placeholder="Describe the problem" formControlName="problem"></textarea>
+                <p class="text-danger" *ngIf="((ref.submitted || problem.touched) && problem?.errors?.['required'])">
+                  *problem is required</p>
+                  <p class="text-danger" *ngIf="((ref.submitted || problem.touched) && problem?.errors?.['minlength'])">
+                    *problem  should have 6 characters</p>
+              </div>
+              <button (click)="addFeature()" class="btn btn-primary" type="button"
+              [disabled]="description.controls.length==3">addDescription</button>
+              <div formArrayName="addDescription">
+
+            
+                <div *ngFor="let mob of description.controls;let i=index">
+                  <textarea name="" id="" class="form-control mt-2 mb-2" rows="3" [formControlName]="i"></textarea>
+                  <div class="text-end"><button class="btn btn-danger" type="button"  (click)="delete(i)" >delete</button></div>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary d-block mx-auto">book</button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- Button trigger modal -->
+
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->

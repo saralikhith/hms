@@ -1,0 +1,224 @@
+
+
+    <div class="pagetitle">
+      <h1>Add Doctors</h1>
+      
+    </div><!-- End Page Title -->
+
+
+        <div class="row mb-3">
+            <div class="col-sm-12">
+                <form #ref="ngForm" [formGroup]="doctorForm" (ngSubmit)="doctorForm.valid && addDoctor()">
+                  {{doctorForm.valid}}
+                <div class="card mb-3">
+                    <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
+                        <h6 class="mb-0 fw-bold ">Doctor Basic Inforamtion</h6>
+                    </div>
+                    <div class="card-body">
+                       
+                          <div class="row">
+                              <div class="col-md-6 mb-2">
+                              <div class="">
+                                <label class="form-label" for="fullName" >Full Name</label>
+                                <input type="text" id="fullname" name="fullname" class="form-control p-2" formControlName="fullname"/>
+                              </div>
+                              <div id="fullnamet">
+                                  <p class="text-danger"
+                                *ngIf="((ref.submitted || fullname.touched) && fullname?.errors?.['required'])">*fullname
+                                is required</p>
+                                <p class="text-danger"
+                                *ngIf="((ref.submitted || fullname.touched) && fullname.errors?.['pattern'])">*fullname
+                                should contain only alphabets</p>
+                                <p class="text-danger"
+                                *ngIf="((ref.submitted || fullname.touched) && fullname.errors?.['minlength'])">*fullname
+                                should contain minimum of 6 characters</p>
+                              </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6 mb-2">
+                              <div class="">
+                                <label class="form-label" for="email">Email Address</label>
+                                <input type="email" id="Name" name="email" class="form-control p-2" formControlName="email">
+                              </div>
+                              <div id="emailt">
+                                <p class="text-danger"
+                                *ngIf="((ref.submitted || email.touched) && email?.errors?.['required'])">*email
+                                is required</p>
+                                <p class="text-danger"
+                                *ngIf="((ref.submitted || email.touched) && email?.errors?.['email'])">*email
+                            format is wrong</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6 mb-2">
+                             <div class="">
+                               <label class="form-label" for="phonenumber">Phone Number</label>
+                               <input type="text" id="phonenumber" name="phonenumber" class="form-control p-2"  formControlName="phonenumber"/>
+                             </div>
+                             <div id="phonenumbert">
+                              <p class="text-danger"
+                              *ngIf="((ref.submitted || phonenumber.touched) && phonenumber?.errors?.['required'])">*phonenumber
+                              is required</p>
+                              <p class="text-danger"
+                              *ngIf="((ref.submitted || phonenumber.touched) && phonenumber?.errors?.['pattern'])">*phonenumber
+                              should contain 10 digits</p>
+                             </div>
+                           </div>
+                           <div class="col-md-6 col-lg-6 mb-2">
+                             <div class="">
+                               <label class="form-label" for="admitdate">Join Date</label>
+                               <input type="date" id="admitdate" name="join_date" class="form-control p-2" formControlName="join_date"/>
+                             </div>
+                             <div id="join_datet">
+                              <p class="text-danger"
+                              *ngIf="((ref.submitted || join_date.touched) && join_date?.errors?.['required'])">*Join Date
+                              is required</p>
+                             </div>
+                           </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6 mb-2">
+                             <div class="">
+                               <label class="form-label" for="admittime">Join Time</label>
+                               <input type="time" id="admittime" name="join_time" class="form-control p-2"  formControlName="join_time"/>
+                             </div>
+                             <div id="join_timet">  <p class="text-danger"
+                              *ngIf="((ref.submitted || join_time.touched) && join_time?.errors?.['required'])">*Join Time
+                              is required</p>
+
+                             </div>
+                           </div>
+                           
+     
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <label class="form-label">Gender</label>
+                              <div class="row">
+                                  <div class="col-md-4">
+                                      <div class="form-check">
+                                          <input class="form-check-input" type="radio" name="gender" id="male" value="Male" checked="" formControlName="gender">
+                                          <label class="form-check-label" for="male">
+                                          Male
+                                          </label>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                      <div class="form-check">
+                                          <input class="form-check-input" type="radio" name="gender" id="female" value="Female" formControlName="gender">
+                                          <label class="form-check-label" for="female">
+                                          Female
+                                          </label>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                      <div class="form-check">
+                                          <input class="form-check-input" type="radio" name="gender" id="others" value="Others" formControlName="gender">
+                                          <label class="form-check-label" for="others">
+                                          Others
+                                          </label>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div id="gendert">
+                                <p class="text-danger"
+                                *ngIf="((ref.submitted || gender.touched) && gender?.errors?.['required'])">*gender
+                                is required</p>
+                              </div>
+                          </div>
+                          </div>
+                      
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6"><div class="card mb-3">
+                        <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
+                            <h6 class="mb-0 fw-bold ">Authentication Information</h6>
+                        </div>
+                       <div class="card-body">
+                       
+                                <div class="row g-3 align-items-center">
+                                    <div class="col-md-10">
+                                        <label for="username" class="form-label">Username</label>
+                                        <input type="text" class="form-control" id="username" name="username" required="" formControlName="username">
+                                    </div>
+                                    <div id="usernamet">  <p class="text-danger"
+                                      *ngIf="((ref.submitted || username.touched) && username?.errors?.['required'])">*username
+                                      is required</p></div>
+                                    <div class="col-md-10">
+                                        <label for="password" class="form-label">Password</label>
+                                        <input type="password" class="form-control" id="password" name="password" required="" formControlName="password">
+                                    </div>
+                                    <div id="passwordt">  <p class="text-danger"
+                                      *ngIf="((ref.submitted || password.touched) && password?.errors?.['required'])">*password
+                                      is required</p></div>
+                                    <div class="col-md-10">
+                                        <label for="cnpassword" class="form-label">Confirm Password</label>
+                                        <input type="password" class="form-control" id="cnpassword" name="cnpassword" required="" formControlName="cnpassword">
+                                    </div>
+                                    <div id="confirmpasswordt">  <p class="text-danger"
+                                      *ngIf="((ref.submitted || cnpassword.touched) && cnpassword?.errors?.['required'])">*Confirm Password
+                                      is required</p>
+                                      <p class="text-danger"
+                                      *ngIf="((ref.submitted || cnpassword.dirty) && doctorForm.errors)">*Password and Confirm Password
+                                      should be same</p>
+                                    </div>
+                                    
+                                </div>
+                            
+                        </div>  
+                    </div></div>
+                    <div class="col-6"><div class="card mb-3">
+                      <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
+                          <h6 class="mb-0 fw-bold ">More Information</h6>
+                      </div>
+                     <div class="card-body">
+                      
+                              <div class="row g-3 align-items-center mb-3">
+                                <label for="about" class="col-md-4 col-lg-3 col-form-label">About</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <textarea name="about" class="form-control" id="about" style="height: 100px" formControlName="about"></textarea>
+                                </div>
+                              </div>
+                              <div id="aboutt">  <p class="text-danger"
+                                *ngIf="((ref.submitted || about.touched) && about?.errors?.['required'])">*about
+                                is required</p>
+                                <p class="text-danger"
+                                *ngIf="((ref.submitted || about.touched) && about?.errors?.['minlength'])">*about should atleast consist of 6 characters </p>
+                              </div>
+                              <div class="row">
+                                <label class=" col-form-label col-4">Specialization</label>
+                                <div class="col-8">
+                                  <select class="form-select" aria-label="Default select" id="specialization" name="specialization" formControlName="specialization">
+                                    <option value="surgeory" selected>Surgeory</option>
+                                    <option value="dentist">Dentist</option>
+                                    <option value="gynecologist">Gynecologist</option>
+                                    <option value="dermatologist">Dermatologist</option>
+                                    <option value="ent">ENT Specialist</option>
+                                    <option value="generalPhysician">General Physician</option>
+                                  </select>
+                                </div>
+                                <p class="text-danger"
+                                *ngIf="((ref.submitted || specialization.touched) && specialization?.errors?.['required'])">*specialization
+                                is required</p>
+                              </div>
+                     
+                          
+                            <div class="mt-4" >
+                              
+                              <input type="file" id="file" name="image" (change)="selectFile($event)" class="form-control p-2" required  />
+                            </div>
+                            <div id="imgurlt"></div>
+                            <div class="text-center mt-3 mb-3">
+                              <button type="submit" class="btn btn-primary px-5" >Submit</button>   
+                          
+                          </div>
+                      
+                      </div>  
+                  </div>
+                   </div>
+                  </div>
+                </form></div>
+        </div>
+    
+

@@ -1,0 +1,165 @@
+<section style="background-color: #eee">
+  <form #ref="ngForm" (ngSubmit)="save(ref.value)">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="card mb-4">
+            <div class="card-body text-center">
+              <img
+                [src]="userObj.image"
+                alt="avatar"
+                routerLink="userprofile"
+                class="rounded-circle img-fluid"
+                style="width: 150px"
+              />
+              <input type="file" name="image"  (change)="selectFile($event)"  *ngIf="edit">
+              <h5 class="my-3">{{ userObj.username }}</h5>
+              <p class="text-muted mb-1">{{ userObj.city }}</p>
+
+              <div class="d-flex flex-column py-2 mb-5">
+                <button
+                  type="button"
+                  class="btn btn-primary mb-2 btn-sm"
+              (click)="editProfile()" *ngIf="!edit" 
+                >
+                  <i class="fa-solid fa-pen-to-square mx-2"></i>Edit Profile
+                </button>
+                <button
+                type="submit"
+                class="btn btn-primary mb-2 btn-sm"
+                *ngIf="edit" [disabled]="disable"
+              >
+                <i class="fa-solid fa-pen-to-square mx-2"></i>Save Changes
+              </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="card mb-4">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-3">
+                  <label for="pincode" class="form-label">Full Name</label>
+               
+                </div>
+                <div class="col-sm-9">
+               
+                  <input
+                  type="text"
+                  name="fullname"
+                  class="form-control"
+                  [(ngModel)]="us.user.fullname" 
+                  [disabled]="!edit"
+                />
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3">
+                  <label for="pincode" class="form-label">email</label>
+               
+                </div>
+                <div class="col-sm-9">
+               
+                  <input
+                  type="text"
+                  name="email"
+                  class="form-control"
+                  [(ngModel)]="us.user.email"
+                  [disabled]="!edit"
+                />
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3">
+                  <label for="pincode" class="form-label">phone number</label>
+               
+                </div>
+                <div class="col-sm-9">
+               
+                  <input
+                  type="text"
+                  name="phonenumber"
+                  class="form-control"
+                  [(ngModel)]="us.user.phonenumber"
+                  [disabled]="!edit"
+                />
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3">
+                  <label for="date" class="form-label">date</label>
+               
+                </div>
+                <div class="col-sm-9">
+               
+                  <input
+                  type="date"
+                  name="date"
+                  class="form-control"
+                  [(ngModel)]="us.user.date"
+                  [disabled]="!edit"
+                />
+                </div>
+              </div>
+            
+             
+              <hr />
+              <div class="row">
+                <div class="col-sm-3">
+                  <label for="pincode" class="form-label">city</label>
+               
+                </div>
+                <div class="col-sm-9">
+               
+                  <input
+                  type="text"
+                  name="city"
+                  class="form-control"
+                  [(ngModel)]="us.user.city"
+                  [disabled]="!edit"
+                />
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3">
+                  <label for="pincode" class="form-label">pincode</label>
+               
+                </div>
+                <div class="col-sm-9">
+               
+                  <input
+                  type="text"
+                  name="pincode"
+                  class="form-control"
+                  [(ngModel)]="us.user.pincode"
+                  [disabled]="!edit"
+                />
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3">
+                  <label for="state" class="form-label">state</label>
+                </div>
+                <div class="col-sm-9">
+                  <input
+                    type="text"
+                    name="state"
+                    class="form-control"
+                    [(ngModel)]="us.user.state"
+                    [disabled]="!edit"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</section>

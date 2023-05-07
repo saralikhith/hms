@@ -1,0 +1,43 @@
+  
+p{
+    font-size: x-small;
+    
+    font-weight:normal;
+  
+    
+  }
+  body{
+    background-color: white;
+  }
+  #pol a{
+     text-decoration:none;
+       padding-bottom: 5px;
+    color: black;
+       font-size:small;
+      
+       margin-right: 20px;
+      
+     
+  }
+  footer{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 600%;
+    background-color: #ffffffb9
+  }
+  #pol a:hover{
+   color: blue;
+  }
+  
+  #fo a{
+    
+  
+    font-size:2rem;
+    padding-right: 10px;
+  }
+  #fo a:hover{
+         color: blue;
+  }
+  li{
+     list-style-type: none;
+  }

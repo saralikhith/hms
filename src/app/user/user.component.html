@@ -1,0 +1,94 @@
+<div class="row p-0 mx-0">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" >
+    <!-- Container wrapper -->
+    <div class="container" id ="a">
+      <!-- Navbar brand -->
+      <a class="navbar-brand me-2" href="" routerLink="home">
+        <img
+          src="../assets/heart-beat.png"
+          height="36"
+          loading="lazy"
+          style="margin-top: -1px;"/>
+      </a>
+      <!--nar-title-->
+      <a class="title navbar-brand " routerLink="home">Aarogya</a>
+      <!-- Toggle button -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarButtonsExample"
+        aria-controls="navbarButtonsExample"
+        aria-expanded="false"
+        aria-label="Toggle navigation"> <i class="fas fa-bars"></i>
+      </button>
+      <!-- Collapsible wrapper -->
+      <div class="collapse navbar-collapse" id="navbarButtonsExample">
+        <!-- left links -->
+        <ul class="d-flex navbar-nav ms-auto mb-2 mb-lg-0 mb-sm-0">
+       
+          
+          <li>
+            <button type="button" class="btn btn-light me-1 mb-1" routerLink="myappointments" routerLinkActive="active" >
+               appointments
+            </button>
+          </li>     
+          <li>
+            <button type="button" class="btn btn-light me-1 mb-1" routerLink="doctor" routerLinkActive="active" >
+               doctors
+            </button>
+          </li>
+   
+        <li>
+          <button type="button" class="btn btn-light me-1 mb-1"  routerLink="help" routerLinkActive="active">
+            Help
+          </button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-primary btn-sm ms-2 mt-2 me-3"  (click)="bookAppointment()">
+           Book Appointment
+          </button>
+        </li>
+    
+         <!--profile-->
+         <li class="" >
+          <div class="dropdown">
+            <a class="dropdown-toggle y1"  data-bs-toggle="dropdown" aria-expanded="false" style="color: #483d8b;">
+            <img
+              src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+              class="rounded-circle"
+              height="38"
+              alt="Black and White Portrait of a Man"
+              loading="lazy"/>
+          </a>
+            <ul class="dropdown-menu ">
+              <li><a class="btn dropdown-item l1" id="y1"  routerLink="userprofile">Profile</a></li>
+              <li><a class=" btn dropdown-item l1" id="y1" routerLink="contactus" >Help</a></li>
+              <li><a class=" btn dropdown-item l1" id="y1" routerLink="login" (click)="logOut()">Logout</a></li>
+            </ul>
+          </div>
+        </li>
+        <!--profile-end-->
+     
+        </ul>
+      </div>
+      <!--Collapsible wrapper-->
+  </div>
+    <!-- Container wrapper -->
+  </nav>
+  <!-- Navbar -->
+  
+  
+  
+  <div class="m-0 p-0">
+      <router-outlet></router-outlet>
+  </div>
+  <!--slideshow-->
+
+  </div>
+    <div>
+    <!-- <app-footer class="mt-auto "></app-footer> -->
+    </div>
+  
+

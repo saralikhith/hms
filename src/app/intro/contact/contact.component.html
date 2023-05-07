@@ -1,0 +1,132 @@
+<!--Section: Contact v.2-->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-1">
+
+        </div>
+        <div class="col-lg-10">
+            <section class="mb-4">
+
+                <!--Section heading-->
+                <h2 class="h1-responsive font-weight-bold text-center my-4">Contact us</h2>
+                <!--Section description-->
+                <p class="text-center w-responsive mx-auto mb-5">Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within
+                    a matter of hours to help you.</p>
+            
+                <div class="row">
+            
+                    <!--Grid column-->
+                    <div class="col-md-9 mb-md-0 mb-5">
+                        <form [formGroup]="contactForm" name="contact-form" (ngSubmit)="contactForm.valid && onSubmit()" #ref="ngForm">
+            
+                            <!--Grid row-->
+                            <div class="row">
+            
+                                <!--Grid column-->
+                                <div class="col-md-6">
+                                    <div class="md-form mb-0">
+                                        <label for="name" class="">Your name</label>
+                                        <input type="text" id="name" name="name" class="form-control" formControlName="fullname">
+                                       
+                                    </div>
+                                    <p class="text-danger"
+                                    *ngIf="((ref.submitted || fullname.touched) && fullname?.errors?.['required'])">*fullname
+                                    is required</p>
+                                </div>
+                                <!--Grid column-->
+            
+                                <!--Grid column-->
+                                <div class="col-md-6">
+                                    <div class="md-form mb-0">
+                                        <label for="email" class="">Your email</label>
+                                        <input type="text" id="email" name="email" class="form-control" formControlName="email">
+                                    
+                                    </div>
+                                    <p class="text-danger"
+                                    *ngIf="((ref.submitted || emaill.touched) && emaill?.errors?.['required'])">*email
+                                    is required</p>
+                                    <p class="text-danger"
+                                    *ngIf="((ref.submitted || emaill.touched) && emaill?.errors?.['email'])">*email format is wrong</p>
+                                </div>
+                                <!--Grid column-->
+            
+                            </div>
+                            <!--Grid row-->
+            
+                            <!--Grid row-->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="md-form mb-0">
+                                        <label for="subject" class="">Subject</label>
+                                        <input type="text" id="subject" name="subject" class="form-control" formControlName="subject">
+                                      
+                                    </div>
+                                    <p class="text-danger"
+                                    *ngIf="((ref.submitted || subject.touched) && subject?.errors?.['required'])">*subject
+                                    is required</p>
+                                    <p class="text-danger"
+                                    *ngIf="((ref.submitted || subject.touched) && subject?.errors?.['minlength'])">*subject
+                                    should consist of 6 characters</p>
+                                </div>
+                            </div>
+                            <!--Grid row-->
+            
+                            <!--Grid row-->
+                            <div class="row">
+            
+                                <!--Grid column-->
+                                <div class="col-md-12">
+            
+                                    <div class="md-form">
+                                        <label for="message">Your message</label>
+                                        <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea" formControlName="message"></textarea>
+                                     
+                                    </div>
+                                    <p class="text-danger"
+                                    *ngIf="((ref.submitted || message.touched) && message?.errors?.['required'])">*message
+                                    is required</p>
+                                    <p class="text-danger"
+                                    *ngIf="((ref.submitted || message.touched) && message?.errors?.['minlength'])">*message
+                                should consist of minimum 6 characters</p>
+                                </div>
+                            </div>
+                            <!--Grid row-->
+                            <div class="text-center text-md-left mt-3">
+                                <button type="submit" class="btn btn-primary" >Send</button>
+                            </div>
+            
+                        </form>
+            
+                     
+                        <div class="status"></div>
+                    </div>
+                    <!--Grid column-->
+            
+                    <!--Grid column-->
+                    <div class="col-md-3 text-center">
+                        <ul class="list-unstyled mb-0">
+                            <li><i class="fas fa-map-marker-alt fa-2x"></i>
+                                <p>Hyderabad,India</p>
+                            </li>
+            
+                            <li><i class="fas fa-phone mt-4 fa-2x"></i>
+                                <p>+999999999</p>
+                            </li>
+            
+                            <li><i class="fas fa-envelope mt-4 fa-2x"></i>
+                                <p>contact@Aarogya.com</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Grid column-->
+            
+                </div>
+            
+            </section>
+        </div>
+        <div class="col-lg-1">
+
+        </div>
+    </div>
+</div>
+<!--Section: Contact v.2-->

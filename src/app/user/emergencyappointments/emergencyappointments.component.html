@@ -1,0 +1,27 @@
+<div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style="position: relative; height: 700px">
+  <span class="text-center mt-2 text-secondary"><ng-content></ng-content></span>
+<table class="table table-striped mb-0 bg-glass">
+  <thead>
+    <tr class="">
+      <th scope="col">Doctor Name</th>
+      <th scope="col">Reason</th>
+      <th scope="col">Date</th>
+      <th scope="col">Time</th>
+      <th scope="col" id='spann'>Status</th>
+    </tr>
+  </thead>
+  <tbody >
+    <tr *ngFor="let appo of appointments;let i=index">
+    <td *ngIf="appo.doctor.fullname">{{appo.doctor.fullname}}</td> 
+   <td *ngIf="!appo.doctor.fullname">{{appo.doctor}}</td>
+    <td>{{appo.specialization}}</td> 
+    <td *ngIf="appo.doctor.fullname">{{appo.date | date: 'dd-MM-yyyy'}}</td> 
+    <td *ngIf="!appo.doctor.fullname">{{appo.appointmentdate}}</td> 
+    <td>{{appo.timeslot}}</td>
+    <td *ngIf="appo.doctor.fullname=='Not assigned'&&appo.status=='pending'">{{appo.status}}</td> 
+    <td *ngIf="appo.doctor.fullname!='Not assigned'&&appo.status=='pending'"><button class="btn btn-success" (click)="acceptAppointment(i)"><i class="fa-solid fa-check text-white"></i></button> <button class="btn btn-danger" (click)="cancelAppointment(i)"><i class="fa-solid fa-ban text-white"></i></button></td>
+    <td *ngIf="appo.doctor.fullname!='Not assigned'&&appo.status=='accepted'">{{appo.status}}</td>
+    </tr>
+  </tbody>
+</table>
+</div>

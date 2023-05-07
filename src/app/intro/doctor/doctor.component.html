@@ -1,0 +1,20 @@
+<div class="container">
+    <!-- <button (click)="hello()">x</button> -->
+      <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-2 row-cols-1  g-4  mb-2 mt-3" >
+          <div class="col" *ngFor="let v of allDoctors |paginate:{itemsPerPage:6,currentPage:p};let ind=index" >
+  <div class="card mx-2 h-100 abc"   >
+      <img class="card-img-top" [src]="v.image" alt="Card image cap" width="100%" height="150rem">
+      <div class="card-body">
+        <h5 class="card-title">{{v.fullname}}</h5>
+        <p class="card-text">{{v.specialization}}</p>
+        <button  class="btn btn-warning  float-end" (click)="doctorProfile(v)" >view</button>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+  <div class="container  text-center mt-3" >
+    <pagination-controls  (pageChange)="p=$event" ></pagination-controls>
+  </div>
+
+ 

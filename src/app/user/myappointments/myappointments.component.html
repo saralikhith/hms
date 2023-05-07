@@ -1,0 +1,23 @@
+
+<div class="container-fluid ">
+  <!-- <h5 class="text-end text-warning mt-2 me-3">welcome ,<span class="text">username</span> 
+      <span class="ps-1"> <img src=".." alt="" width="60px" class="mt-1"></span> 
+      </h5> -->
+<ul class="nav nav-pills mb-2 d-flex justify-content-evenly mt-3">
+  <li class="nav-item">
+     <button class="btn btn-primary"(click)="regular()">Regular</button>
+    </li>
+  <li class="nav-item">
+    <button class="btn btn-primary"(click)="emergency()">emergency</button>
+  </li>
+
+
+</ul>
+          
+</div>
+<div class="container">
+ <app-emergencyappointments [appointments]="appointmentObj">
+  <h1>{{value}} Appointments</h1>
+ </app-emergencyappointments>
+
+  </div>

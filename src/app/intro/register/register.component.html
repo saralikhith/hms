@@ -1,0 +1,213 @@
+
+  
+        <div class="row mt-3">
+          <div class="col-sm-1 col-lg-2"></div>
+     
+           <div class="col-lg-7">
+            <div class="card bg-glass">
+              <h5 class="my-5 display-6 mx-auto fw-bold ls-tight" style="color: hsl(220, 100%, 50%)">
+                Registeration
+                <span style="color: hsl(218, 81%, 75%)">Form</span>
+              </h5>
+              <div class="card-body px-4 py-2 px-md-5">
+            <form #ref="ngForm"  (ngSubmit)="ref.valid && onSignUp(ref.value)">
+             
+
+                  <div class="row">
+                     <div class="col-md-6 mb-2">
+
+                      <div class="">
+                        <label class="form-label" for="fullName">Full Name</label>
+                        <input type="text" id="fullname" name="fullname" class="form-control p-2"  ngModel minlength='4'  pattern="[a-zA-Z]*"  required #ref1="ngModel" />
+                        <p class="text-danger" *ngIf="((ref.submitted || ref1.dirty || ref1.touched) && ref1.errors?.['required'])">*fullname is required</p>
+                        <p class="text-danger" *ngIf="((ref.submitted || ref1.dirty) && ref1.errors?.['minlength'])">* full name should consisit of 4 characters</p>
+       
+                        <p class="text-danger" *ngIf="((ref.submitted || ref1.dirty) && ref1.errors?.['pattern'])">* full name shouldnts consist of number</p>
+                      </div>
+                  
+                    </div>
+
+                    <div class="col-md-6 col-lg-6 mb-2">
+
+                      <div class="">
+                        <label class="form-label" for="Name">Username</label>
+                        <input type="text" id="Name" name="username" class="form-control p-2" ngModel required #ref3="ngModel"  minlength="6"
+                           />
+                           <p class="text-danger" *ngIf="((ref.submitted || ref3.touched) && ref3.errors?.['required'])">*Username is required</p>
+                    <p class="text-danger" *ngIf="((ref.submitted || ref3.dirty) && ref3.errors?.['minlength'])">* Usernname should consisit of  6 characters</p>
+            
+
+                      </div>
+                     
+                    </div>
+
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6 col-lg-6  mb-2">
+
+                      <div class=" ">
+                        <label for="birthdayDate" class="form-label">Date Of Birth</label>
+                        <input type="date" class="form-control p-2" id="birthdayDate" name="date" ngModel required #ref4="ngModel" />
+                          <p class="text-danger" *ngIf="((ref.submitted || ref4.touched) && ref4.errors?.['required'])">*date is required</p>
+                      </div>
+                     
+                    </div>
+                    <div class="col-md-6 col-lg-6  mb-2">
+                      <div class="">
+                        <label class="form-label" for="phoneNumber">Phone Number</label>
+                        <input type="number" id="phonenumber" class="form-control p-2" name="phonenumber"  ngModel required #ref5="ngModel" pattern="\d{10}" >
+                        <p class="text-danger" *ngIf="((ref.submitted || ref5.touched) && ref5.errors?.['required'])">*Phone number is required</p>
+                        <p class="text-danger" *ngIf="((ref.submitted || ref5.touched) && ref5?.errors?.['pattern'])">*emergencyphone should contain 10 digits</p>
+                      </div>
+       
+
+                    </div>
+
+                    <div class="col-md-12 mb-2">
+
+                      <h6 class="mb-2 pb-1">Gender: </h6>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="maleGender" value="male"    ngModel
+                         />
+                        <label class="form-check-label" for="maleGender">Male</label>
+                      </div>
+
+                      <div class="form-check form-check-inline">
+
+
+                        <input class="form-check-input" type="radio" name="gender" id="femaleGender" value="female"  ngModel/>
+                        <label class="form-check-label" for="maleGender">Female</label>
+                      </div>
+
+
+
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="Gender" id="otherGender" value="other" />
+                        <label class="form-check-label" for="otherGender">Other</label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12  mb-2">
+
+                      <div class="">
+                        <label class="form-label" for="emailAddress">Email</label>
+                        <input type="email" id="emailAddress" class="form-control p-2" name="email" ngModel required  email #ref7="ngModel"/>
+                        <p class="text-danger" *ngIf="((ref.submitted || ref4.touched) && ref7.errors?.['required'])">*Email is required</p>
+                        <p class="text-danger" *ngIf="((ref.submitted || ref4.touched || ref7.dirty) && ref7.errors?.['email'])">Enter valid email address</p>  
+                      </div>
+                     
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12 col-lg-12  mb-2">
+
+                      <div class="">
+                        <label class="form-label" for="pass">Password</label>
+                        <input type="password" id="passw" class="form-control p-2" name="password" ngModel  pattern="(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}" required #ref8="ngModel" 
+                         />
+                         <p class="text-danger" *ngIf="((ref.submitted || ref8.touched) && ref8.errors?.['required'])">*Password is required</p>
+                         <p class="text-danger" *ngIf="((ref.submitted || ref8.dirty) && ref8.errors?.['pattern'])">*password should contain Atleast one digit,Atleast one lowercase character,Atleast one uppercase character,Atleast one special character </p>   
+                      </div>
+                     
+                    </div>
+                    <div class="col-md-12 col-lg-12  mb-2">
+
+                      <div class=" form-group">
+                        <label class="form-label" for="copass">Confirm Password</label>
+                        <input type="password" id="copass" class="form-control p-2" name="confirmPassword" ngModel required #ref30="ngModel" [match]=ref8.value
+                         />
+                         <p class="text-danger" *ngIf="((ref.submitted || ref30.touched) && ref30.errors?.['required'])">*Confirm Password is required</p>
+                         <p class="text-danger" *ngIf="((ref.submitted || ref30.dirty) && ref30.errors?.['valid'])">*Password and Confirm Password not matched</p>
+
+                      </div>
+                    
+                    </div>
+
+                    </div>
+                  <!-- <div class="row">
+                    <div class="col-md-12  mb-2">
+    
+                      <div class="form-outline">
+                          
+                        <label class="form-label" for="pi">Address</label>
+                        <textarea name="address" id="Address" cols="50" class="form-control" name="address" oninput="adress()"></textarea>
+                      </div>
+    
+                    </div>
+                    <div id="addresst"></div>
+                  </div> -->
+                  <div class="row">
+                      <div class="col-md-6 col-lg-6  mb-2">
+        
+                          <div class="">
+                              <label class="form-label" for="ci">City</label>
+                            <input type="text" id="ci" class="form-control p-2" name="city" ngModel required #ref9="ngModel" />
+                            <p class="text-danger" *ngIf="((ref.submitted || ref9.touched) && ref9.errors?.['required'])">*city is required</p>
+                          </div>
+     
+                        </div>
+                        <div class="col-md-6 col-lg-6  mb-2">
+        
+                          <div class="">
+                              <label class="form-label" for="pi">Pincode</label>
+                            <input type="number" id="pi" class="form-control p-2" name="pincode"  ngModel required #ref10="ngModel" />
+                            <p class="text-danger" *ngIf="((ref.submitted || ref10.touched) && ref10.errors?.['required'])">*pincode is required</p>
+             
+                           
+                          </div>
+                          
+                        </div>
+      
+                      </div>
+                    
+                      <div class="col-md-12 col-lg-12 mb-2">
+    
+                        <div class="">
+                            <label class="form-label" for="Name">State</label>
+                            <select class="form-select" aria-label="Default select example" class="form-control" name="state" ngModel>
+                              
+                                <option name="state" value="Telangana" class="form-control" selected>Telangana</option>
+                                <option name="state" value="Andhra Pradesh" class="form-control">Andhra Pradesh</option>
+                             
+                              </select>
+                        </div>
+
+                      </div>
+
+                      
+                       <div class="row">
+                        <div class="col-md-12  mb-2">
+
+                          <div class="">
+                            <label class="form-label" for="img">Image</label>
+                
+                            <input type="file" id="file"  class="form-control p-2" name="image" (change)="selectFile($event)" required />
+                          
+  
+                          </div>
+                         
+                        </div>
+                      </div>
+                      <div class=" pt-2 mb-2 text-center">
+                        <button class="btn  btn-md" type="submit" style="color:white;background-color: red;" >Register</button>
+                      </div>
+                    </form>
+                 
+
+                    <p class=" pb-lg-2 my-4 text-center">Already have an account? 
+                      <a routerLink="/login">Login</a></p>
+               
+                    </div>
+                  
+              
+              </div>
+           
+         
+ 
+      </div>
+      <div class="col-lg-2"></div>
+        </div>
+
